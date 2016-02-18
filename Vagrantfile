@@ -7,7 +7,8 @@
 # you're doing.
 Vagrant.configure(2) do |config|
 
-  config.vm.box = "ubuntu/trusty64"
+  # http://datasciencetoolbox.org/
+  config.vm.box = "data-science-toolbox/dst"
 
   config.vm.network "forwarded_port", guest: 8888, host: 8888
 
