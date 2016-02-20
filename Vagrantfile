@@ -9,12 +9,10 @@ Vagrant.configure(2) do |config|
 
   # http://datasciencetoolbox.org/
   config.vm.box = "data-science-toolbox/dst"
+  config.vm.hostname = "weather"
 
-  config.vm.network "forwarded_port", guest: 8888, host: 8888
-
-  config.vm.provider "virtualbox" do |vb|
-    vb.memory = "256"
-  end
+  config.vm.network :private_network, ip:"192.168.33.11"
+  #config.vm.network "forwarded_port", guest: 8888, host: 8880
 
   config.vm.provision "shell", inline: <<-SHELL
     sudo apt-get update
@@ -25,6 +23,23 @@ Vagrant.configure(2) do |config|
     sudo pip install jupyter
     sudo pip install ipython
     sudo mkdir /vagrant/notebook
+
+    # Matplotlib Basemap Toolkit
+    sudo apt-get install -y python-matplotlib
+    sudo apt-get install -y python-mpltoolkits.basemap
+
+    # pygrib
+    sudo apt-get install -y python-grib
+
+    # add-apt-repository
+    sudo apt-get install -y apt-file
+    sudo apt-file update
+    sudo apt-file search add-apt-repository
+    sudo apt-get install -y software-properties-common
+
+    # GDAL
+    sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable && sudo apt-get update
+    sudo apt-get install -y gdal-bin
 
   SHELL
 
