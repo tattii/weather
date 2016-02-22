@@ -41,6 +41,11 @@ Vagrant.configure(2) do |config|
     sudo add-apt-repository ppa:ubuntugis/ubuntugis-unstable && sudo apt-get update
     sudo apt-get install -y gdal-bin
 
+    # NetCDF4
+    sudo apt-get install -y libhdf5-serial-dev
+    sudo apt-get isntall -y libnetcdf*
+    sudo pip install NetCDF4
+
   SHELL
 
   config.vm.provision "shell", run: "always", inline: <<-SHELL
