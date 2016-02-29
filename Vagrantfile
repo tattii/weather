@@ -31,7 +31,8 @@ Vagrant.configure(2) do |config|
     sudo mkdir /vagrant/notebook
 
     # jupyter extensions
-    sudo pip install https://github.com/ipython-contrib/IPython-notebook-extensions/archive/master.zip install https://github.com/ipython-contrib/IPython-notebook-extensions/archive/master.zipp
+    mkdir -p .local/share/jupyter
+    sudo pip install https://github.com/ipython-contrib/IPython-notebook-extensions/archive/master.zip
 
     # Matplotlib Basemap Toolkit
     sudo apt-get install -y python-matplotlib
