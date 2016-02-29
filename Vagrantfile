@@ -30,6 +30,9 @@ Vagrant.configure(2) do |config|
     sudo pip install ipython
     sudo mkdir /vagrant/notebook
 
+    # jupyter extensions
+    sudo pip install https://github.com/ipython-contrib/IPython-notebook-extensions/archive/master.zip install https://github.com/ipython-contrib/IPython-notebook-extensions/archive/master.zipp
+
     # Matplotlib Basemap Toolkit
     sudo apt-get install -y python-matplotlib
     sudo apt-get install -y python-mpltoolkits.basemap
